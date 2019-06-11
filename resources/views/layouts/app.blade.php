@@ -12,16 +12,34 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <script type="text/javascript" charset="utf8" src="/js/sweetalert.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="/js/LoadingOverlay.js" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('/img/loading.gif') 50% 50% no-repeat rgb(249, 249, 249);
+        }
+    </style>
+
+
 </head>
 <body>
+<div class="loader"></div>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -80,5 +98,8 @@
         @yield('content')
     </main>
 </div>
+
+<!-- Include this after the sweet alert js file -->
+@include('sweet::alert')
 </body>
 </html>

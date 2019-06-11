@@ -29,4 +29,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    methods: {
+
+        myFunctionOnLoad: function () {
+
+            console.log('Loaded successfully!');
+            $(".loader").fadeOut("slow");
+            $('.data-table').DataTable();
+        }
+
+    },
+    mounted() {
+        window.addEventListener('load', () => {
+            this.myFunctionOnLoad();
+        })
+    },
 });

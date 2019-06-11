@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@fail')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/students', function () {
+    $students = \App\Student::all();
+
+    return view('Students', ['students' => $students]);
+});

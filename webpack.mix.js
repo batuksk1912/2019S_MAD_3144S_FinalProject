@@ -10,6 +10,10 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+    //mix.copy('vendor/foo/bar.css', 'public/css/bar.css');
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .copy('node_modules/sweetalert/dist', 'public/js')
+    .copy('resources/loadingoverlay/LoadingOverlay.js', 'public/js')
+    .copy('resources/loadingoverlay/loading.gif', 'public/img');
