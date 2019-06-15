@@ -17,7 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    //only authorized users can access these routes
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('profile', 'ProfileController');
+});
 
 
 Route::group(["middleware" => "App\Http\Middleware\AdminMiddleware"], function () {

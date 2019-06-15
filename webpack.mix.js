@@ -16,4 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .copy('node_modules/sweetalert/dist', 'public/js')
     .copy('resources/loadingoverlay/LoadingOverlay.js', 'public/js')
-    .copy('resources/loadingoverlay/loading.gif', 'public/img');
+    .copy('resources/loadingoverlay/loading.gif', 'public/img')
+    .copy('resources/js/forms/jquery.mask.min.js', 'public/js')
+    .copy('resources/js/forms/jquery.validate.js', 'public/js')
+    .copy('resources/js/forms/additional-methods.js', 'public/js');
