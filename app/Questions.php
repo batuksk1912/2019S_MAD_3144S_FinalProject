@@ -44,4 +44,19 @@ class Questions extends Model
      */
     protected $dates = ['created_at', 'updated_at'];
 
+    public function test()
+    {
+        return $this->belongsTo(Tests::class, "test_id", "id");
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answers::class, "question_id", "id");
+    }
+
+    public function answered()
+    {
+        return $this->hasMany(UsersQuestionAnswers::class, "question_id", "id");
+    }
+
 }

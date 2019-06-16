@@ -21,7 +21,7 @@ class UsersQuestionAnswers extends Model
      *
      * @var array
      */
-    protected $fillable = ['answer_id', 'created_at', 'question_id', 'updated_at', 'user_id', 'was_right'];
+    protected $fillable = ['answer_id', 'created_at', 'question_id', 'test_id', 'was_right', 'updated_at', 'user_id', 'session_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -43,5 +43,15 @@ class UsersQuestionAnswers extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
+
+    public function question()
+    {
+        return $this->belongsTo(Questions::class, "question_id", "id");
+    }
+
+    public function answer()
+    {
+        return $this->belongsTo(Answers::class, "answer_id", "id");
+    }
 
 }

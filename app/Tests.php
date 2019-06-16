@@ -44,4 +44,9 @@ class Tests extends Model
      */
     protected $dates = ['created_at', 'updated_at'];
 
+    public function questions()
+    {
+        return $this->hasMany(Questions::class, "test_id", "id");
+    }
+
 }

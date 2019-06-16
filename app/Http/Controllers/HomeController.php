@@ -25,7 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        \Session::regenerate();
+        //var_dump(\Session::getId());
         // Alert::info('You are logged in!', 'Welcome!');
-        return view('home');
+        $tests = \App\Tests::all()->where('is_active', '=', '1')->take(5);
+
+        return view('home', ['tests' => $tests]);
     }
 }

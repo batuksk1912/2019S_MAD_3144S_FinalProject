@@ -1,4 +1,3 @@
-@section('title', "Profile Update")
 @extends('layouts.app')
 
 @section('content')

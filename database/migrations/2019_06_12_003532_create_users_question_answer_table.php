@@ -27,6 +27,8 @@ class CreateUsersQuestionAnswerTable extends Migration
             $table->unsignedBigInteger('answer_id');
             $table->foreign('answer_id')->references('id')->on('answers');
 
+            $table->text('session_id');
+
             $table->timestamps();
         });
     }
