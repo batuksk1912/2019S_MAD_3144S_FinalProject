@@ -30,12 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::group(["middleware" => "App\Http\Middleware\AdminMiddleware"], function () {
-    //Route::match(["get", "post"], "/students/", "HomeController@admin");
-    Route::get('/students', function () {
-        $students = \App\Student::all();
-
-        return view('Students', ['students' => $students]);
-    });
+    Route::get('/admin', 'HomeController@indexAdmin')->name('home');
 });
 
 

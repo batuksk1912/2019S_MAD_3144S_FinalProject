@@ -19,14 +19,14 @@ class HistoryController extends Controller
                                 CASE
                                     WHEN sum(users_question_answers.was_right) >= tests.passing_score THEN "Passed"
                                     ELSE "Fail"
-                                END as "final"
-                        
+                                END as "final",
+                                max(users_question_answers.created_at) as created_at
                                 FROM
                                 users_question_answers
                                 JOIN tests
                                 ON users_question_answers.test_id = tests.id
                                 WHERE
-                                tests.user_id = ' . \Auth::id() . '
+                                users_question_answers.user_id = ' . \Auth::id() . '
                                 group by 1,2,3');
 
 
