@@ -85,6 +85,12 @@
                                 <a class="dropdown-item" href="{{ route('history') }}">
                                     View Previous Tests
                                 </a>
+                                @if (Auth::user()->role=="Admin")
+                                    <a class="dropdown-item text-info" href="{{ route('manage-tests') }}">
+                                        Manage Tests
+                                    </a>
+                                @endif
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

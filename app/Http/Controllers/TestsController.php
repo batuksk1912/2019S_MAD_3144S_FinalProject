@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Answers;
 use App\Questions;
 use App\Tests;
 use App\UsersQuestionAnswers;
@@ -17,7 +16,9 @@ class TestsController extends Controller
      */
     public function index()
     {
-        //
+        $tests = \App\Tests::with('user')->get();
+
+        return view('show-tests', ['test_data' => $tests]);
     }
 
     /**
@@ -104,7 +105,9 @@ class TestsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $test = Tests::findOrFail($id);
+
+        return view('edit-test')->with('test', $test);
     }
 
     /**
@@ -116,7 +119,14 @@ class TestsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $test = Tests::findOrFail($id);
+
+        if (!$test->update($request->all())) {
+            \Alert::error('Please try again.', 'Error');
+            return redirect()->back();
+        }
+        \Alert::success('Test updated successfully!', 'Success');
+        return redirect()->route('manage-tests');
     }
 
     /**

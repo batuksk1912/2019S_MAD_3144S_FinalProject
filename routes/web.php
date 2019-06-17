@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(["middleware" => "App\Http\Middleware\AdminMiddleware"], function () {
     Route::get('/admin', 'HomeController@indexAdmin')->name('home');
+    Route::get('/manage-tests', 'TestsController@index')->name('manage-tests');
+    Route::get('/edit-tests/{id}', 'TestsController@edit')->name('edit-tests');
+    Route::put('/edit-tests/{id}', 'TestsController@update')->name('update-tests');
 });
 
 
