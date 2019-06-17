@@ -86,6 +86,9 @@
                                     View Previous Tests
                                 </a>
                                 @if (Auth::user()->role=="Admin")
+                                    <a class="dropdown-item text-info" href="{{ route('home') }}">
+                                        Admin Status Page
+                                    </a>
                                     <a class="dropdown-item text-info" href="{{ route('manage-tests') }}">
                                         Manage Tests
                                     </a>
