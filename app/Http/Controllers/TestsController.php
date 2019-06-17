@@ -71,6 +71,7 @@ class TestsController extends Controller
             ->where('session_id', '=', \Session::getId())
             ->get()->pluck('question_id')->toArray();
 
+
         if (count($history) >= 10) {
             $score_data = UsersQuestionAnswers::where('test_id', '=', $currentTestId)
                 ->where('user_id', '=', \Auth::id())
@@ -78,9 +79,8 @@ class TestsController extends Controller
                 ->get()->count();
 
             $testData = Tests::where('id', '=', $currentTestId)->get()->toArray();
-
             return view('show-score', ['score_data' => $score_data, 'test' => $testData]);
-
+            exit();
 
         } else {
 
@@ -89,7 +89,7 @@ class TestsController extends Controller
             $questions = Questions::with('answers', 'test')
                 ->where('test_id', '=', $currentTestId)
                 ->where('is_active', '=', 1)
-                ->whereNotIn('id', [implode($history, ',')])
+                ->whereNotIn('id', $history)
                 ->get()->shuffle()->take(1);
 
             return view('show-questions', ['questions' => $questions, 'step' => $stepCount]);
