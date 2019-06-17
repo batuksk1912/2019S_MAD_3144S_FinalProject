@@ -72,7 +72,7 @@ class TestsController extends Controller
             ->get()->pluck('question_id')->toArray();
 
 
-        if (count($history) >= 10) {
+        if (count($history) == 10) {
             $score_data = UsersQuestionAnswers::where('test_id', '=', $currentTestId)
                 ->where('user_id', '=', \Auth::id())
                 ->where('was_right', '=', 1)

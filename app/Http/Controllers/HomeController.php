@@ -49,12 +49,13 @@ class HomeController extends Controller
                                     WHEN sum( users_question_answers.was_right ) >= tests.passing_score THEN
                                     "Passed" ELSE "Fail" 
                                 END AS "final",
-                                max(users_question_answers.created_at) as created_at
+                                max(users_question_answers.created_at) as created_at,
+                                users_question_answers.session_id
                             FROM
                                 users_question_answers
                                 JOIN tests ON users_question_answers.test_id = tests.id 
                                 JOIN users ON users_question_answers.user_id = users.id
-                            GROUP BY 1,2,3');
+                            GROUP BY 1,2,3,7');
 
 
         return view('home-admin', ['generalData' => $generalStatus]);
