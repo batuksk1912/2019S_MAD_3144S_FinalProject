@@ -21,6 +21,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     //only authorized users can access these routes
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/history', 'HistoryController@index')->name('history');
 
     Route::post('/test', 'TestsController@show')->name('test');
 
